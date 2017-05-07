@@ -1,0 +1,38 @@
+package org.comutu.xero.api;
+
+import com.xero.model.Account;
+
+import java.io.IOException;
+import java.util.List;
+
+/**
+ * Created by johara on 07/05/17.
+ */
+public class AccountsApi extends AbstractXeroApi {
+
+   public static List<Account> getAllAccountsByType() throws IOException {
+
+      List<Account> accounts = null;
+
+      accounts = client.getAccounts();
+
+      return accounts;
+   }
+
+   public static List<Account> getAllAccountsByType(String type) throws IOException {
+
+      return client.getAccounts( null, "TYPE==\"" + type + "\"", null );
+   }
+
+   public static Account getAccountDetails(String number) throws IOException, CliException {
+
+      //TODO : change to make correct call through client API
+      List<Account> accounts = client.getAccounts( null, "Code==\"" + number + "\"", null );
+
+      if ( accounts.size() == 0 )
+         throw new CliException( "No accounts found with ID: " + number );
+
+      return accounts.get( 0 );
+
+   }
+}
