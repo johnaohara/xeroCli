@@ -11,16 +11,12 @@ import java.util.List;
 public class AccountsApi extends AbstractXeroApi {
 
    public static List<Account> getAllAccountsByType() throws IOException {
-
       List<Account> accounts = null;
-
       accounts = client.getAccounts();
-
       return accounts;
    }
 
    public static List<Account> getAllAccountsByType(String type) throws IOException {
-
       return client.getAccounts( null, "TYPE==\"" + type + "\"", null );
    }
 
@@ -31,6 +27,9 @@ public class AccountsApi extends AbstractXeroApi {
 
       if ( accounts.size() == 0 )
          throw new CliException( "No accounts found with ID: " + number );
+
+      if ( accounts.size() > 1 )
+         throw new CliException( "More than one account found with ID: " + number );
 
       return accounts.get( 0 );
 

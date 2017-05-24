@@ -31,8 +31,8 @@ public class AccountCommand implements Command {
 
          account = AccountsApi.getAccountDetails(number);
 
-         //TODO: outputter
-         System.out.println(account.getBankAccountNumber());
+         //TODO: dynamic outputter
+         invocation.getShell().out().println(account.getBankAccountNumber());
 
          return CommandResult.SUCCESS;
 

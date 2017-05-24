@@ -3,13 +3,20 @@ package org.comutu.xero;
 import org.comutu.xero.commands.AccountCommand;
 import org.comutu.xero.commands.AccountsCommand;
 import org.comutu.xero.commands.ExitCommand;
+import org.comutu.xero.commands.KpiReportCommand;
+import org.comutu.xero.commands.ProfitLossReportCommand;
 import org.comutu.xero.commands.StatementCommand;
 import org.jboss.aesh.console.AeshConsole;
 import org.jboss.aesh.console.AeshConsoleBuilder;
 import org.jboss.aesh.console.Prompt;
+import org.jboss.aesh.console.command.Command;
 import org.jboss.aesh.console.command.registry.AeshCommandRegistryBuilder;
 import org.jboss.aesh.console.settings.Settings;
 import org.jboss.aesh.console.settings.SettingsBuilder;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.ServiceLoader;
 
 /**
  * Xero Cli
@@ -26,15 +33,17 @@ public class XeroCli {
 
    public static void main(String[] args) {
 
-      config = args[1];
+//      config = args[1];
 
       Settings settings = new SettingsBuilder().logging( true ).create();
 
       AeshCommandRegistryBuilder commandRegistryBuilder = new AeshCommandRegistryBuilder()
-         .command( ExitCommand.class )
          .command( AccountCommand.class )
          .command( AccountsCommand.class )
-         .command( StatementCommand.class );
+         .command( ExitCommand.class )
+         .command( KpiReportCommand.class )
+         .command( ProfitLossReportCommand.class )
+         .command( StatementCommand.class )
       ;
 
       AeshConsole aeshConsole = new AeshConsoleBuilder().settings( settings )

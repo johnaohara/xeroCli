@@ -1,8 +1,6 @@
 package org.comutu.xero.api;
 
-import com.xero.api.JsonConfig;
 import com.xero.api.XeroClient;
-import org.comutu.xero.XeroCli;
 
 /**
  * Abstract xero api class
@@ -13,6 +11,8 @@ public abstract class AbstractXeroApi {
    protected static XeroClient client;
 
    static {
-      client = new XeroClient( new JsonConfig( XeroCli.config ) );
+      //TODO: change xero client to accept file input for configuration
+//      client = new XeroClient( new JsonConfig( XeroCli.config ) );
+      client = new XeroClient( );
    }
 }

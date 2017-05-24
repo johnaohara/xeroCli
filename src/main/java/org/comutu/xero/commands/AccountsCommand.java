@@ -21,14 +21,13 @@ public class AccountsCommand implements Command {
    @Option(shortName = 't', description = "Type of accounts to retrieve")
    private String type;
 
-
    @Override
    public CommandResult execute(CommandInvocation invocation) throws CommandException {
 
       List<Account> accountsList = null;
       try {
 
-         //TODO: api exectuion builder to correctly determine invocation target
+         //TODO: api execution builder to correctly determine invocation target
          if ( type == null ) {
             accountsList = AccountsApi.getAllAccountsByType();
          }
@@ -40,7 +39,7 @@ public class AccountsCommand implements Command {
          throw new CommandException( "Command Exception occured", e );
       }
 
-      //TODO: outputter
+      //TODO: dynaic outputter
       accountsList.forEach( account -> invocation.getShell().out().println( account.getCode() + ": " + account.getName() ) );
 
       return CommandResult.SUCCESS;
