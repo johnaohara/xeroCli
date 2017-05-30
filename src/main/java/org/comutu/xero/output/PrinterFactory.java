@@ -11,6 +11,8 @@ public class PrinterFactory {
             return new CsvReportPrinter();
          case TERMINAL:
             return new ReportPrinter();
+         case REPORT_TERMINAL:
+            return new ReportPrinter();
          default:
             return null;
       }

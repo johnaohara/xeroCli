@@ -4,6 +4,7 @@ import org.comutu.xero.commands.AccountCommand;
 import org.comutu.xero.commands.AccountsCommand;
 import org.comutu.xero.commands.ExitCommand;
 import org.comutu.xero.commands.KpiReportCommand;
+import org.comutu.xero.commands.PaymentsCommand;
 import org.comutu.xero.commands.ProfitLossReportCommand;
 import org.comutu.xero.commands.StatementCommand;
 import org.jboss.aesh.console.AeshConsole;
@@ -42,6 +43,7 @@ public class XeroCli {
          .command( AccountsCommand.class )
          .command( ExitCommand.class )
          .command( KpiReportCommand.class )
+         .command( PaymentsCommand.class )
          .command( ProfitLossReportCommand.class )
          .command( StatementCommand.class )
       ;

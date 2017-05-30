@@ -1,8 +1,10 @@
 package org.comutu.xero.api;
 
 import com.xero.model.Account;
+import com.xero.model.Payment;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -34,4 +36,18 @@ public class AccountsApi extends AbstractXeroApi {
       return accounts.get( 0 );
 
    }
+
+   public static List<Payment> getPayments() throws IOException {
+      return client.getPayments();
+   }
+
+   public static List<Payment> getPayments(String accountNumnber, String fromDate, String toDate) throws IOException {
+
+      String accountID = client.getAccount( accountNumnber ).getAccountID();
+      String where = "Account.AccountID = " + accountID;
+
+      return client.getPayments(null, where, null);
+//      public List<Payment> getPayments(Date modifiedAfter, String where, String order) throws IOException {
+
+      }
 }

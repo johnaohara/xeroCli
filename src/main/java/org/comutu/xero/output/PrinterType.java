@@ -5,7 +5,8 @@ package org.comutu.xero.output;
  */
 public enum PrinterType {
    CSV( "CSV" ),
-   TERMINAL( "TERMINAL" );
+   TERMINAL( "TERMINAL" ),
+   REPORT_TERMINAL( "REPORT_TERMINAL" );
 
    private String type;
 
